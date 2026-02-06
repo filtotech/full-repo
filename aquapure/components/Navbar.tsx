@@ -1,137 +1,112 @@
-"use client";
+ import React from 'react'
+ import Image from 'next/image'
+ import Link from 'next/link';
+ import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ShoppingCart, Droplet, ShieldCheck, Zap } from "lucide-react";
+ const Navbar = () => {
+    const products = [
+  {
+    id: "aquapure-classic",
+    name: "AquaPure Classic",
+    price: 9.0,
+    description: "Our signature mineralized water, fortified for daily vitality.",
+    image: "https://images.unsplash.com/photo-1548919973-5dea5846f680?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "aquapure-sport",
+    name: "AquaPure Sport",
+    price: 14.0,
+    description: "Enhanced with electrolytes for peak physical performance.",
+    image: "https://images.unsplash.com/photo-1559839914-17aae19cea0e?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "aquapure-zen",
+    name: "AquaPure Zen",
+    price: 19.0,
+    description: "Infused with subtle magnesium for calming focus.",
+    image: "https://images.unsplash.com/photo-1523362628744-0c100150b504?auto=format&fit=crop&q=80&w=800"
+  }
+];
+   return (
+     <nav className="fixed top-0 h-20 w-full z-50 glass bg-white/80 backdrop-blur-md border-b-2 border-b-black">
+  <div className="container mx-auto px-6 py-4 flex justify-between items-center h-full">
+    
+    {/* Logo and Tagline Container */}
+    <Link href="/" className="flex flex-col items-start leading-tight p-2">
+    <div className="flex flex-col items-start leading-tight">
+      <Image
+        src="/aquapure-logo-final.png"
+        alt="AquaPure Logo"
+        width={140} // Adjusted for better navbar fit
+        height={40}  // Height should be proportional
+        className=""
+        priority
+      />
+      <span className="text-[10px] font-semibold text-primary/80 uppercase tracking-tighter mt-1 absolute translate-y-17 bg-gradient-to-r from-neutral-600 to-green-400 bg-clip-text text-transparent font-bold text-4xl -translate-x-5">
+        A Product of Bidhan Pharmaceuticals Pvt. Ltd.
+      </span>
+    </div>
+    </Link>
 
-import Link from "next/link";
-import Image from 'next/image';
-import { useState } from "react";
-import { Menu, X, ChevronDown, Beaker, ShieldCheck, Stethoscope } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+    {/* Navigation Links */}
+    <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
+  {/* PRODUCT DROPDOWN START */}
+  <div className="relative group">
+    <Link 
+      href="/products" 
+      className="hover:text-primary transition-colors font-semibold font-mono flex items-center gap-1 py-2"
+    >
+      Products
+      {/* Small arrow icon that rotates on hover */}
+      <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </Link>
 
-export default function Header() {
-    const [open, setOpen] = useState(false);
+    {/* Dropdown Menu */}
+    <div className="absolute left-0 top-full w-64 pt-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+      <div className="bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden p-2">
+        <Link href="/products/aquapure-classic" className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-colors">
+          <span className="text-gray-900 font-bold lowercase first-letter:uppercase">AquaPure-Classic</span>
+          <span className="text-[10px] text-gray-400 normal-case">For Normal Hydration</span>
+        </Link>
+        <Link href="/products/aquapure-sport" className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-colors">
+          <span className="text-gray-900 font-bold lowercase first-letter:uppercase">AquaPure-Sport</span>
+          <span className="text-[10px] text-gray-400 normal-case">For Atheletic Enthusiast</span>
+        </Link>
+        <Link href="/products/aquapure-zen" className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-colors">
+          <span className="text-gray-900 font-bold lowercase first-letter:uppercase">AquaPure-Zen</span>
+          <span className="text-[10px] text-gray-400 normal-case">Premium Hydration Experience</span>
+        </Link>
+      </div>
+    </div>
+  </div>
+  {/* PRODUCT DROPDOWN END */}
 
-    // Categories for your dropdown
-    const productCategories = [
-        { name: "Baby-LM", href: "/products/Baby-LM", icon: Beaker, desc: "Advanced medicinal formulations." },
-        { name: "BCPlex-L", href: "/products/BCPlex-L", icon: ShieldCheck, desc: "Daily wellness and hygiene." },
-        { name: "Miazen-F2", href: "/products/Miazen-F2", icon: Stethoscope, desc: "Precision testing equipment." },
-    ];
+  <Link href="about-us" className="hover:text-primary transition-colors font-semibold font-mono py-2">About</Link>
+  <Link href="contact-us" className="hover:text-primary transition-colors font-semibold font-mono py-2">Contact</Link>
+  <Link href="bidhan" className="hover:text-primary transition-colors font-semibold font-mono py-2">Bidhan Pharma</Link>
+</div>
+    {/* <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
+      <Link href="products" className="hover:text-primary transition-colors font-semibold font-mono">Products</Link>
+      <Link href="about-us" className="hover:text-primary transition-colors font-semibold font-mono">About</Link>
+      <Link href="contact-us" className="hover:text-primary transition-colors font-semibold font-mono">Contact</Link>
+      <Link href="bidhan" className="hover:text-primary transition-colors font-semibold font-mono">Bidhan Pharma</Link>
+    </div> */}
 
-    const navLinks = [
-        { name: "Home", href: "/" },
-        { name: "About Us", href: "/about-us" },
-        // "Products" is handled separately below
-        { name: "Research & Quality", href: "/research" },
-		{name : 'Contact US', href: '/contact-us'},
-        { name: "Careers", href: "/careers" },
-    ];
-
-    return (
-        <header className="sticky top-0 z-50 w-full backdrop-blur-lg border-b border-slate-200 bg-white/80">
-            <div className="mx-auto max-w-7xl px-6">
-                <div className="flex h-20 items-center justify-between">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group">
-                        <Image src={'/bidhanlogo.png'} width={80} height={80} alt="Bidhan Pharmaceuticals Logo" className="transition-transform group-hover:scale-105 rounded-2xl" />
-                        <div className="leading-tight">
-                            <p className="text-lg font-bold text-slate-900">Bidhan Pharmaceuticals</p>
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-blue-600 font-bold">Science • Care • Trust</p>
-                        </div>
-                    </Link>
-
-                    {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-1">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors rounded-full hover:bg-slate-50"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-
-                        {/* --- PRODUCTS DROPDOWN --- */}
-                        <div className="relative group px-4 py-2">
-                            <button className="flex items-center gap-1 text-sm font-medium text-slate-700 group-hover:text-blue-600 transition-colors">
-                                Products
-                                <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
-                            </button>
-
-                            {/* Dropdown Menu */}
-                            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-                                <div className="w-80 rounded-2xl border border-slate-100 bg-white p-4 shadow-xl ring-1 ring-black/5">
-                                    <div className="grid gap-2">
-                                        {productCategories.map((item) => (
-                                            <Link
-                                                key={item.name}
-                                                href={item.href}
-                                                className="group/item flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-blue-50"
-                                            >
-                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                                    <item.icon size={20} />
-                                                </div>
-                                                <div>
-                                                    <p className="text-sm font-semibold text-slate-900">{item.name}</p>
-                                                    <p className="text-xs text-slate-500">{item.desc}</p>
-                                                </div>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                    <div className="mt-4 border-t border-slate-100 pt-4">
-                                        <Link href="/products" className="block text-center text-xs font-bold text-blue-600 hover:underline">
-                                            View All Products
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* --- END PRODUCTS DROPDOWN --- */}
-
-                        <Link
-                            href="/contact-us"
-                            className="ml-6 inline-flex items-center rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-200 hover:bg-blue-700 hover:shadow-blue-300 transition-all active:scale-95"
-                        >
-                            Get in Touch
-                        </Link>
-                    </nav>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setOpen(!open)}
-                        className="lg:hidden p-2 text-slate-700"
-                    >
-                        {open ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu (simplified for brevity) */}
-            <AnimatePresence>
-                {open && (
-                    <motion.div 
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="lg:hidden border-t border-slate-200 bg-white overflow-hidden"
-                    >
-                        <div className="px-6 py-8 space-y-4">
-                            {navLinks.map((link) => (
-                                <Link key={link.name} href={link.href} onClick={() => setOpen(false)} className="block text-lg font-medium text-slate-700">
-                                    {link.name}
-                                </Link>
-                            ))}
-                            <div className="pt-4 border-t border-slate-100">
-                                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Our Products</p>
-                                {productCategories.map((item) => (
-                                    <Link key={item.name} href={item.href} onClick={() => setOpen(false)} className="block py-2 text-slate-600">
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </header>
-    );
-}
+    {/* Cart Button */}
+    {/* <Link href="/checkout" passHref>
+      <Button variant="outline" className="gap-2 rounded-full">
+        <ShoppingCart className="w-4 h-4" />
+        Cart (0)
+      </Button>
+    </Link> */}
+    
+  </div>
+</nav>
+   )
+ }
+ 
+ export default Navbar
+ 

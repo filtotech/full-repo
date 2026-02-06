@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Hero from "@/components/Hero";
 import { Metadata } from "next";
+import PhilosophySection from "@/components/Philosophy";
 const productData = {
   name: "Baby - LM",
   category: "Anti-allergic / Anti-asthmatic",
@@ -80,7 +81,9 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
+    <>
     <Hero />
-    
+    <PhilosophySection />
+    </>
   );
 }

@@ -40,38 +40,12 @@ export default function Hero() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 h-fit w-full z-50 glass bg-white/80 backdrop-blur-md border-b">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/aquapure-logo-final.png"
-              alt="AquaPure Logo"
-              width={150}
-              height={150}
-              className="text-primary rounded-2xl relative right-20"
-            />
-            {/* <span className="text-xl font-bold tracking-tight text-primary">AquaPure</span> */}
-            {/* <Droplet className="text-primary w-8 h-8" />
-            <span className="text-2xl font-bold tracking-tight text-primary">AquaPure</span> */}
-          </div>
-          <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
-            <Link href="#products" className="hover:text-primary transition-colors">Products</Link>
-            <Link href="#about" className="hover:text-primary transition-colors">About</Link>
-            <Link href="#bidhan" className="hover:text-primary transition-colors">Bidhan Pharma</Link>
-          </div>
-          <Link href="/checkout" passHref>
-            <Button variant="outline" className="gap-2 rounded-full">
-              <ShoppingCart className="w-4 h-4" />
-              Cart (0)
-            </Button>
-          </Link>
-        </div>
-      </nav>
+    
       <hr />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-l from-blue-500 from-20% to-transparent to-50%">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -105,49 +79,9 @@ export default function Hero() {
             />
           </motion.div>
         </div>
-      </section>
 
-      {/* Bidhan Pharma Section */}
-      <section id="bidhan" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="uppercase tracking-[0.3em] text-sm opacity-80 mb-4 block">Pharmaceutical Grade</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-                Manufactured by Bidhan Pharmaceuticals
-              </h2>
-              <p className="text-lg opacity-90 mb-8 leading-relaxed">
-                AquaPure is not just water; it's a wellness product. Developed in state-of-the-art laboratories at Bidhan Pharmaceuticals, every drop is fortified with essential minerals for optimal health.
-              </p>
-              <Button variant="secondary" className="rounded-full" asChild>
-                <a href="https://aquapure.bidhanpharma.com" target="_blank" rel="noopener noreferrer">Visit Bidhan Pharma</a>
-              </Button>
-            </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-              <Card className="bg-white/10 border-none text-white">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <ShieldCheck className="w-10 h-10 mb-4 text-accent" />
-                  <h3 className="font-bold mb-2">Safety First</h3>
-                  <p className="text-sm opacity-80">Rigorous clinical testing standards</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white/10 border-none text-white">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Zap className="w-10 h-10 mb-4 text-accent" />
-                  <h3 className="font-bold mb-2">Fortified</h3>
-                  <p className="text-sm opacity-80">Rich in essential minerals</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
+        {/* Product Grid */}
       </section>
-
-      {/* Product Grid */}
       <section id="products" className="py-24">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -192,8 +126,51 @@ export default function Hero() {
         </div>
       </section>
 
+      {/* Bidhan Pharma Section */}
+      <section id="bidhan" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="uppercase tracking-[0.3em] text-sm opacity-80 mb-4 block">Pharmaceutical Grade</span>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+                Manufactured by Bidhan Pharmaceuticals Pvt. Ltd.
+              </h2>
+              <p className="text-lg opacity-90 mb-8 leading-relaxed">
+                AquaPure is not just water; it's a wellness product. Developed in state-of-the-art laboratories at Bidhan Pharmaceuticals, every drop is fortified with essential minerals for optimal health.
+              </p>
+              <Button variant="secondary" className="rounded-full" asChild>
+                <a href="https://aquapure.bidhanpharma.com" target="_blank" rel="noopener noreferrer">Visit Bidhan Pharma</a>
+              </Button>
+            </motion.div>
+            <div className="grid grid-cols-2 gap-4">
+              <Card className="bg-white/10 border-none text-white">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <ShieldCheck className="w-10 h-10 mb-4 text-accent" />
+                  <h3 className="font-bold mb-2">Safety First</h3>
+                  <p className="text-sm opacity-80">Rigorous clinical testing standards</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/10 border-none text-white">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <Zap className="w-10 h-10 mb-4 text-accent" />
+                  <h3 className="font-bold mb-2">Fortified</h3>
+                  <p className="text-sm opacity-80">Rich in essential minerals</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      
+
       {/* Footer */}
-      <footer className="py-12 border-t">
+      {/* <footer className="py-12 border-t">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <Droplet className="text-primary w-6 h-6" />
@@ -205,7 +182,7 @@ export default function Hero() {
             <Link href="/terms" className="text-sm hover:text-primary">Terms</Link>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
 import Image from "next/image";
 export default function Footer() {
 	return (
-		<footer className="bg-slate-950 text-slate-300">
+		<footer className=" bg-slate-950 text-slate-300">
 			{/* Top Section */}
 			<div className="mx-auto max-w-7xl px-6 py-16">
 				<div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">

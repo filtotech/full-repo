@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactView from './ContactUsView'
+// import ContactView from './ContactUsView'
 import { Metadata } from 'next';
 import ContactPage from '@/components/ContactUs';
 
