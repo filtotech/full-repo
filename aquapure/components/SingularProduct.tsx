@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 
 const images = [
-  'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&q=80&w=800',
+  '/aquapure-classic.png',
+  '/aquapure-classic.png',
+  '/aquapure-classic.png',
 ];
 
 const reviews = [
@@ -12,8 +12,40 @@ const reviews = [
   { id: 2, name: "Marcus V.", rating: 4, text: "Incredible sound stage, though the ear pads took a day to break in. Sleek design.", date: "1 week ago" },
   { id: 3, name: "Elena R.", rating: 5, text: "Battery life is actually better than advertised. I only charge them once a week!", date: "2 weeks ago" },
 ];
+const products = [
+  {
+    id: 1,
+    tag: "Best Seller",
+    name: "AquaPure-Classic",
+    description: "Aquapure's Classic variant suitable for normal and non-athletic consumption.",
+    price: 9.00,
+    rating: 5,
+    reviews: 128,
+    image: "aquapure-classic.png"
+  },
+  {
+    id: 2,
+    tag: "New Arrival",
+    name: "Aquapure-Sport",
+    description: "Aquapure's Sport variant, enriched with electrolytes for enhanced hydration during physical activities.",
+    price: 349.00,
+    rating: 4,
+    reviews: 85,
+    image: "aquapure-classic.png"
+  },
+  {
+    id: 3,
+    tag: "Premium",
+    name: "Aquapure-Zen",
+    description: "Crystal clear optics for the modern photographer.",
+    price: 199.00,
+    rating: 5,
+    reviews: 42,
+    image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&q=80&w=600"
+  }
+];
 
-export default function ProductPage() {
+export default function ProductPage({name}: {name: string}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -22,10 +54,10 @@ export default function ProductPage() {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-
+  const selectedProduct = products.find(product=> product?.name?.toLowerCase() == name?.toLowerCase());
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-gray-50 py-12 px-6 md:relative md:top-20 ">
+      <div className="max-w-6xl mx-auto relative top-20">
         
         {/* Main Product Card */}
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row mb-16">
@@ -33,18 +65,18 @@ export default function ProductPage() {
           {/* Left Side: Product Details */}
           <div className="md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
             <span className="text-blue-600 font-bold tracking-widest uppercase text-xs mb-4">
-              Premium Sound
+              {selectedProduct?.tag || "Best Seller"}
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
-              Aura Pro <br/>Headphones
+              {selectedProduct?.name || "AquaPure"}
             </h1>
             <p className="text-gray-500 text-lg mb-8 leading-relaxed max-w-md">
-              Engineered with the new H2 chip, providing smarter noise cancellation and deeply immersive spatial audio.
+              {selectedProduct?.description || "Engineered with the new H2 chip, providing smarter noise cancellation and deeply immersive spatial audio."}
             </p>
             
             <div className="flex items-baseline mb-10">
-              <span className="text-4xl font-medium text-gray-900">$299.00</span>
-              <span className="ml-3 text-gray-400 line-through text-lg font-light">$399.00</span>
+              <span className="text-4xl font-medium text-gray-900">MRP ₹ {selectedProduct?.price || 299.00}</span>
+              <span className="ml-3 text-gray-400 line-through text-lg font-light">10.00</span>
             </div>
 
             <button className="w-full md:w-max bg-gray-900 text-white py-4 px-12 rounded-full font-medium hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-200">
@@ -56,7 +88,7 @@ export default function ProductPage() {
           <div className="md:w-1/2 relative h-[400px] md:h-auto overflow-hidden bg-[#f9f9f9]">
             {images.map((src, index) => (
               <img
-                key={src}
+                key={index}
                 src={src}
                 alt={`Product view ${index + 1}`}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${

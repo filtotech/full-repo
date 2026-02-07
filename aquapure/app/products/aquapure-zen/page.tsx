@@ -55,20 +55,20 @@ import { Metadata } from 'next'
 
 // 1. Correct Next.js Metadata Export
 export const metadata: Metadata = {
-  title: 'AquaPure-Classic | Best-Selling Packaged Water in Kolkata',
+  title: 'AquaPure | Best-Selling Packaged Water in Kolkata',
   description: 'Stay hydrated with AquaPure-Classic. Our best-selling purified water is designed for daily, balanced hydration. Perfect for home or office. Order now for $9.00!',
   keywords: [
-    'AquaPure Classic', 'Purified Water', 'Daily Hydration', 'Best Selling Bottled Water',
+    'AquaPure Zen', 'Purified Water', 'Daily Hydration', 'Best Selling Bottled Water',
     'Best Packaged Drinking Water in Kolkata', 'Buy Packaged Drinking Water Online',
     'Packaged Drinking Water', 'Distributor of Packaged Drinking Water', 'Order Packaged Drinking Water',
     'Water for Home', 'Water for Office', 'Hydration Solution', 'AquaPure Products',
     'Premium Packaged Drinking Water', 'Bulk Distributor and Supplier of Packaged Drinking Water in Kolkata',
-    'Best Packaged Drinking Water in India', 'AquaPure Classic Benefits',
+    'Best Packaged Drinking Water in India', 'AquaPure Zen Benefits',
   ],
   openGraph: {
-    title: 'AquaPure-Classic: The Gold Standard for Daily Hydration',
-    description: 'Refresh your day with our best-selling Classic variant. Rated 5/5 stars by over 128 customers.',
-    url: 'https://aquapure-bay.vercel.app/products/aquapure-classic',
+    title: 'AquaPure-Zen: The Gold Standard for Daily Hydration',
+    description: 'Refresh your day with our best-selling Zen variant. Rated 5/5 stars by over 128 customers.',
+    url: 'https://aquapure-bay.vercel.app/products/aquapure-zen',
     siteName: 'AquaPure',
     images: [
       {
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AquaPure-Classic | Premium Daily Water',
+    title: 'AquaPure | Premium Daily Water',
     description: 'The perfect balance for your daily hydration. Get it now for $9.00.',
     images: ['/aquapure-classic.png'],
     site: '@AquaPure_Bidhan', // Added your Twitter handle for better branding
@@ -104,7 +104,7 @@ const page = () => {
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://aquapure-bay.vercel.app/products/aquapure-classic",
+      "url": "https://aquapure-bay.vercel.app/products/aquapure-zen",
       "priceCurrency": "USD",
       "price": "9.00",
       "availability": "https://schema.org/InStock"
@@ -140,7 +140,7 @@ const page = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
       />
       
-      <ProductPage name={"aquapure-classic"} />
+      <ProductPage name={"aquapure-zen"} />
     </>
   )
 }

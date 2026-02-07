@@ -38,7 +38,14 @@ const jsonLd = {
 
 const page = () => {
   return (
-    <ContactPage jsonLd={jsonLd}/>
+    <>
+      {/* 2. Standard way to inject JSON-LD in Next.js App Router */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ContactPage />
+    </>
   )
 }
 

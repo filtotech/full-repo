@@ -15,6 +15,15 @@ const productData = {
 // import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico", // Points to public/favicon.ico
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png", // Points to public/apple-touch-icon.png
+    other: {
+      rel: "/apple-touch-icon-precomposed",
+      url: "/favicon.png",
+    },
+  },
   title: "AquaPure | Premium Mineralized & Electrolyte Enhanced Water",
   description: "Discover AquaPure's premium bottled water collection: Classic Mineralized for daily vitality, Sport with electrolytes, and Zen infused with magnesium for focus.",
   

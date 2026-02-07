@@ -53,7 +53,7 @@ export default function Hero() {
           >
             <h1 className="text-4xl md:text-8xl font-serif font-bold leading-tight mb-6">
               Purity <br />
-              <span className="text-primary italic z-[50]">Redefined. One Water</span><br /> doesnot fit all
+              <span className="text-primary italic z-[50]">Redefined. One Water</span><br />
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-lg">
               Experience the pinnacle of hydration with AquaPure. Mineralized, fortified, and crafted with pharmaceutical precision.
