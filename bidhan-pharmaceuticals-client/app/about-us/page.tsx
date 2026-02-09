@@ -1,3 +1,4 @@
+import AboutUs from '@/components/AboutUs';
 import ContactPage from '@/components/ContactUs';
 import { Metadata } from 'next';
 
@@ -44,7 +45,7 @@ const page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ContactPage />
+      <AboutUs />
     </>
   )
 }

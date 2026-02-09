@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${productData.name} - For All Ages!`,
     description: productData.description,
-    images: [{ url: productData.images }],
+    images: [{ url: productData.images[0] }],
     type: 'website',
     locale: 'en_IN', // Targets India specifically
   },

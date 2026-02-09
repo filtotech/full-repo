@@ -31,9 +31,9 @@ export default function Header() {
                 <div className="flex h-20 items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 group">
-                        <Image src={'/bidhanlogo.png'} width={80} height={80} alt="Bidhan Pharmaceuticals Logo" className="transition-transform group-hover:scale-105" />
+                        <Image src={'/bidhanlogo.png'} width={80} height={80} alt="Bidhan Pharmaceuticals Logo" className="transition-transform group-hover:scale-105 rounded-2xl pt-2" />
                         <div className="leading-tight">
-                            <p className="text-lg font-bold text-slate-900">Bidhan Pharmaceuticals</p>
+                            <p className="text-lg font-bold text-white font-geistMono text-slate-900">Bidhan Pharmaceuticals</p>
                             <p className="text-[10px] uppercase tracking-[0.2em] text-blue-600 font-bold">Science • Care • Trust</p>
                         </div>
                     </Link>
@@ -52,10 +52,12 @@ export default function Header() {
 
                         {/* --- PRODUCTS DROPDOWN --- */}
                         <div className="relative group px-4 py-2">
+                            <Link href={'/products'}>
                             <button className="text-white font-semibold flex items-center gap-1 text-sm font-medium text-slate-700 group-hover:text-blue-600 transition-colors">
                                 Products
                                 <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
                             </button>
+                            </Link>
 
                             {/* Dropdown Menu */}
                             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EnquiryForm = ({selectedProduct}) => {
+const EnquiryForm = ({selectedProduct}: { selectedProduct: any }) => {
   return (
     <div>
         <h1>EnquiryForm</h1>

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Clock, ShieldCheck } from 'lucide-react';
 
-export default function ContactPage({jsonLd}) {
+
+export default function ContactPage({jsonLd}: { jsonLd: any }) {
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Schema Script Injection */}
-      <script
+     {jsonLd && <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      />}
 
       {/* Hero Section */}
       <section className="bg-slate-900 py-20 text-white">
