@@ -37,8 +37,8 @@ export async function sendMail(formData?: FormData) {
       replyTo: customerEmail as string,
       subject: `New Inquiry from ${customerName}`,
       attachments: [{
-    filename: 'aquapure-logo-final.png',
-    path: './public/aquapure-logo-final.png', // Path to your file
+    filename: 'bidhan-ayurvedic-division.png',
+    path: './public/bidhan-ayurvedic-division.png', // Path to your file
     cid: 'companylogo' // Same name as used in the src="cid:..."
   }],
       text: customerMessage as string,
@@ -53,7 +53,7 @@ export async function sendMail(formData?: FormData) {
           
           <tr>
             <td align="center" style="background-color: #1D4ED8; padding: 30px 20px;">
-              <h2 style="color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px; display: flex; justify-content: center; align-items: center;"><img src="cid:companylogo" alt="AquaPure Logo" style="width: 150px; height: 100px; margin-bottom: 10px;">AquaPure</h2>
+              <h2 style="color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 1px; display: flex; justify-content: center; align-items: center;"><img src="cid:companylogo" alt="Bidhan Pharmaceuticals Ayurvedic Division Logo" style="width: 100offpx; height: auto; margin-bottom: 10px;">BIDHAN PHARMACEUTICALS [AYURVEDIC DIVISION]</h2>
             </td>
           </tr>
 

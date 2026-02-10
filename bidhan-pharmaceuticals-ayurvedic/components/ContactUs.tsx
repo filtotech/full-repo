@@ -1,7 +1,29 @@
+"use client";
 import React from 'react';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
-
+import { sendMail } from '@/app/actions/NodemailerEmailSender';
 const ContactUs = () => {
+
+  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+        e.preventDefault();
+        try {
+            const formElement = e.currentTarget;
+            const formData = new FormData(formElement);
+            
+            const result = await sendMail(formData);
+            
+            if (result.success) {
+                alert("Inquiry sent successfully! We will get back to you soon.");
+                formElement.reset();
+            } else {
+                alert("Error: " + (result.error || "Failed to send email. Check your console."));
+            }
+        } catch (error) {
+            console.error("Form submission error:", error);
+            alert("An unexpected error occurred. Please try again.");
+        }
+    }
+
   return (
     <section className="py-24 bg-white" id="contact">
       <div className="container mx-auto px-6 lg:px-12">
@@ -70,11 +92,12 @@ const ContactUs = () => {
 
             {/* Right Column: Inquiry Form */}
             <div className="bg-[#F8FAF9] p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100">
-              <form className="space-y-6">
+              <form onSubmit={(e)=>handleSubmit(e)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
                     <input 
+                      name='name'
                       type="text" 
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
                       placeholder="John Doe"
@@ -83,6 +106,7 @@ const ContactUs = () => {
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
                     <input 
+                      name='email'
                       type="email" 
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
                       placeholder="john@company.com"
@@ -92,7 +116,7 @@ const ContactUs = () => {
 
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Subject</label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all appearance-none bg-white">
+                  <select name='inquiryType' className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all appearance-none bg-white">
                     <option>Distribution Inquiry</option>
                     <option>Product Information</option>
                     <option>Manufacturing Quality</option>
@@ -103,6 +127,7 @@ const ContactUs = () => {
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Your Message</label>
                   <textarea 
+                    name='message'
                     rows={4} 
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
                     placeholder="How can we help you?"

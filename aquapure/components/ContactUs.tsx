@@ -1,11 +1,10 @@
 "use client";
-import { Mail, Phone, MapPin, MessageSquare, Briefcase, Clock, Send } from 'lucide-react';
-// import { sendMail } from '@/utils/NodemailerEmailSender';
+import {LoaderCircle, Mail, Phone, MapPin, MessageSquare, Briefcase, Clock, Send, } from 'lucide-react';
 import { sendMail } from '@/app/actions/NodemailerEmailSender';
+import React from 'react';
 const ContactUs = () => {
-    // let [formData, setFormData] = React.useState<FormData | null>({});
-
-    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    let [formSubmissionLoader, setFormSubmissionLoader] = React.useState(false);
+    async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
             const formElement = e.currentTarget;
@@ -152,7 +151,7 @@ const ContactUs = () => {
 
               <div className="md:col-span-2 mt-4">
                 <button type="submit" className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-2xl transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-200 active:scale-95">
-                  Send Your Inquiry
+                  Send Your Inquiry <LoaderCircle size={16} className={`${formSubmissionLoader ? 'inline-block' : 'hidden'} animate-spin ml-2`} />
                 </button>
                 <p className="text-xs text-slate-400 mt-4 text-center md:text-left italic">
                   *Our proactive support team usually responds within 2 business hours.

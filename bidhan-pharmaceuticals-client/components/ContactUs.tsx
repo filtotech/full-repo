@@ -1,8 +1,28 @@
-import React from 'react';
+"use client";
 import { Mail, Phone, MapPin, Clock, ShieldCheck } from 'lucide-react';
-
+import { sendMail } from '@/app/actions/NodemailerEmailSender';
 
 export default function ContactPage({jsonLd}: { jsonLd: any }) {
+
+  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+        e.preventDefault();
+        try {
+            const formElement = e.currentTarget;
+            const formData = new FormData(formElement);
+            
+            const result = await sendMail(formData);
+            
+            if (result?.success) {
+                alert("Inquiry sent successfully! We will get back to you soon.");
+                formElement.reset();
+            } else {
+                alert("Error: " + (result.error || "Failed to send email. Check your console."));
+            }
+        } catch (error) {
+            console.error("Form submission error:", error);
+            alert("An unexpected error occurred. Please try again.");
+        }
+    }
   return (
     <main className="min-h-screen bg-slate-50">
       {/* Schema Script Injection */}
@@ -69,18 +89,18 @@ export default function ContactPage({jsonLd}: { jsonLd: any }) {
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Send a Secure Message</h2>
             <p className="text-slate-500 mb-8 text-sm italic">Note: For medical emergencies, please contact your local healthcare provider immediately.</p>
             
-            <form className="grid md:grid-cols-2 gap-6">
+            <form onSubmit={(e)=>handleSubmit(e)} className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Full Name</label>
-                <input type="text" placeholder="Dr. John Doe" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" required />
+                <input name='name' type="text" placeholder="Dr. John Doe" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" required />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Email Address</label>
-                <input type="email" placeholder="john@clinic.com" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" required />
+                <input name='email' type="email" placeholder="john@clinic.com" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" required />
               </div>
               <div className="md:col-span-2 space-y-2">
                 <label className="text-sm font-medium text-slate-700">Subject</label>
-                <select className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition bg-white">
+                <select name='inquiryType' className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition bg-white">
                   <option>General Inquiry</option>
                   <option>Products Inquiry</option>
                   <option>Medical Affairs</option>
@@ -90,7 +110,7 @@ export default function ContactPage({jsonLd}: { jsonLd: any }) {
               </div>
               <div className="md:col-span-2 space-y-2">
                 <label className="text-sm font-medium text-slate-700">Message</label>
-                <textarea rows={5} placeholder="How can we assist you?" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" required></textarea>
+                <textarea name='message' rows={5} placeholder="How can we assist you?" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" required></textarea>
               </div>
               <div className="md:col-span-2">
                 <button type="submit" className="w-full md:w-auto px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-lg transition-all transform hover:scale-[1.02]">
