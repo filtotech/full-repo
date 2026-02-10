@@ -31,7 +31,7 @@ export default function Header() {
                 <div className="flex h-20 items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex flex-col items-center pt-4 gap-2 group">
-                        <Image src={'/bidhan-ayurvedic-division.png'} quality={100} width={150} height={80} alt="Bidhan Pharmaceuticals Logo" className="transition-transform group-hover:scale-105 rounded-2xl pt-2 text-white scale-150" />
+                        <Image src={'/`.png'} quality={100} width={150} height={80} alt="Bidhan Pharmaceuticals Logo" className="transition-transform group-hover:scale-105 rounded-2xl pt-2 text-white scale-150" />
                         <div className="leading-tight">
                             {/* <p className="text-lg font-bold text-white font-geistMono text-slate-900">Bidhan Pharmaceuticals</p> */}
                             <p className="text-[10px] uppercase tracking-[0.2em] text-white font-bold">Science • Care • Trust</p>
